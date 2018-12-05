@@ -6,9 +6,9 @@ const CONTACT = {
 		  address: '121, Clear Water Bay Road',
 		  town: 'Clear Water Bay, Kowloon',
 		  city: 'Hong Kong',
-		  Tel: '+852 1234 5678',
-		  Fax: '+456 0930 9090',
-		  Email: 'confusion@food.net'
+		  Tel: 'Tel: +852 1234 5678',
+		  Fax: 'Fax: +456 0930 9090',
+		  Email: 'Email: confusion@food.net'
 		};
 
 const styles = StyleSheet.create({
