@@ -6,12 +6,13 @@ import { DISHES } from '../shared/dishes';
 function RenderDish(props) {
 
     const dish = props.dish;
+    const pic = 'images/uthappizza.png';
     
         if (dish != null) {
             return(
                 <Card
                 featuredTitle={dish.name}
-                image={require('./images/uthappizza.png')}>
+                image={require('./' + pic)}>
                     <Text style={{margin: 10}}>
                         {dish.description}
                     </Text>
