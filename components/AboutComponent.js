@@ -3,6 +3,14 @@ import { Text, ScrollView, View, StyleSheet, FlatList} from 'react-native';
 import { ListItem, Avatar, Card } from 'react-native-elements';
 import { LEADERS } from '../shared/leaders';
 import { DISHES } from '../shared/dishes';
+import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
+
+const mapStateToProps = state => {
+    return {
+      leaders: state.leaders
+    }
+  }
 
 
 
@@ -59,7 +67,7 @@ const Leaders = (props) => {
 						</View>}
 				subtitle={item.description}
 				hideChevron={true}
-				leftAvatar={{ source: require('./images/alberto.png')}}
+				leftAvatar={{source: {uri: baseUrl + item.image}}}
 				/>
 		);
 	};
@@ -71,10 +79,10 @@ const Leaders = (props) => {
 			<Text style={styles.head}>Corporate Leadership</Text>
 			</View>
 			<FlatList 
-			data={props.leader}
-			renderItem={renderLeaderItem}
-			keyExtractor={item => item.id.toString()}
-			/>
+            data={this.props.leaders.leaders}
+            renderItem={renderLeader}
+            keyExtractor={item => item.id.toString()}
+            />
 			</Card>
 
 	)
