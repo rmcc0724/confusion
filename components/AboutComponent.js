@@ -6,6 +6,7 @@ import { DISHES } from '../shared/dishes';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 
+
 const styles = StyleSheet.create({
 	card: {
 		borderBottomWidth :.5,
