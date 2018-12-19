@@ -6,14 +6,6 @@ import { DISHES } from '../shared/dishes';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 
-const mapStateToProps = state => {
-    return {
-      leaders: state.leaders
-    }
-  }
-
-
-
 const styles = StyleSheet.create({
 	card: {
 		borderBottomWidth :.5,
@@ -56,45 +48,11 @@ const History = () =>
 	)
 }
 
-const Leaders = (props) => {
-	const renderLeaderItem = ({ item, index }) => {
-		return (
-				<ListItem
-				key={index}
-				title={
-						<View>
-						<Text style={styles.textBold}>{item.name}</Text>
-						</View>}
-				subtitle={item.description}
-				hideChevron={true}
-				leftAvatar={{source: {uri: baseUrl + item.image}}}
-				/>
-		);
-	};
-	
-
-	return (
-			<Card>
-			<View style={styles.card}>
-			<Text style={styles.head}>Corporate Leadership</Text>
-			</View>
-			<FlatList 
-            data={this.props.leaders.leaders}
-            renderItem={renderLeader}
-            keyExtractor={item => item.id.toString()}
-            />
-			</Card>
-
-	)
-}
-
-
 class About extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-				leaders: LEADERS,
-				dishes: DISHES
+				leaders: LEADERS
 		};
 	}
 	static navigationOptions = {
@@ -104,12 +62,34 @@ class About extends Component {
 
 	render() {
 
-		const { navigate } = this.props.navigation;
-
+		const { params } = this.props.navigation.state;
+		const renderLeaderItem = ({ item, index }) => {
+			return (
+					<ListItem
+					key={index}
+					title={
+							<View>
+							<Text style={styles.textBold}>{item.name}</Text>
+							</View>}
+					subtitle={item.description}
+					hideChevron={true}
+					leftAvatar={{ source: require('./images/alberto.png')}}
+					/>
+			);
+		};
 		return (
 				<ScrollView>
 				<History/>
-				<Leaders leader={this.state.leaders}/>
+				<Card>
+				<View style={styles.card}>
+				<Text style={styles.head}>Corporate Leadership</Text>
+				</View>
+				<FlatList 
+				data={this.state.leaders}
+				renderItem={renderLeaderItem}
+				keyExtractor={item => item.id.toString()}
+				/>
+				</Card>
 				</ScrollView>
 
 		);
